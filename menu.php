@@ -1,6 +1,6 @@
 <?php 
 
-  require_once('connection.php');
+require_once('connection.php');
 
 ?>
 
@@ -16,28 +16,36 @@
 <body>
   
   <?php 
-  
-    include_once("header.php");
-      
+    include_once("header.php");  
   ?>
 
   <main>
 
+    <?php 
+      if (isset($_POST['zoekveld']) && !empty($_POST['zoekveld'])) {
+        $zoekveld = $_POST['zoekveld'];
+        $stmt = $conn->prepare("SELECT * FROM `menu` WHERE `title` LIKE ?");
+        $stmt->execute(["%$zoekveld%"]);
+      }
+      else if (isset($_POST['zoekveld']) && empty($_POST['zoekveld']) && isset($_POST['sub-but'])) {
+        echo "<center><h2 style='margin-bottom: 50px'>Zoekbalk is leeg, voer iets in om resultaat te krijgen.</h2></center>";
+        $stmt = $conn->query("SELECT * FROM `menu`");
+      }
+      else {
+        $stmt = $conn->query("SELECT * FROM `menu`");
+      }
+
+      if ($stmt->rowCount() == 0) {
+        echo "<center><h2 style='margin-bottom: 50px'>Geen resultaten gevonden.</h2></center>";
+      }
+    ?>
+
     <form class="search-bar-con" method="POST">
       <input class="search-bar" name="zoekveld" type="text" placeholder="Zoek uw gerecht..">
-      <button class="index-button search-button" type="submit">Zoek</button>
+      <button class="index-button search-button" name="sub-but" type="submit">Zoek</button>
     </form>
 
-    <?php 
-
-    if (isset($_POST['zoekveld'])) {
-      $zoekveld = $_POST['zoekveld'];
-      $stmt = $conn->query("SELECT * FROM `menu` WHERE `title` LIKE '%$zoekveld%'");
-    }
-    else {
-      $stmt = $conn->query("SELECT * FROM `menu`");
-    }
-
+    <?php
       while ($row = $stmt->fetch()) {
     ?>
 

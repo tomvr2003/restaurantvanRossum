@@ -231,3 +231,33 @@ input::placeholder {
 input:focus {
   outline: none;
 }
+
+/* Admin Panel */
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.admin-main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 90vh;
+}
+
+table {
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
+table {
+  width: 85%;
+  height: 200px;
+}
+

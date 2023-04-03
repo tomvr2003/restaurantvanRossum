@@ -28,7 +28,7 @@
       echo '<a href="./login.php"><button class="index-button">Log in</button></a>';
     } else {
       echo '<a href="./logout.php"><button class="index-button">Log out</button></a>';
-      echo '<a href="./add.php"><button class="index-button">Admin Panel</button></a>';
+      echo '<a href="./adminpanel.php"><button class="index-button">Admin Panel</button></a>';
     }
     ?>
   </div>

@@ -1,3 +1,6 @@
+<?php session_start(); 
+  require("connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,24 +15,15 @@
 <?php
 
 if(isset($_POST['submit_button'])) {
-  // Connectie database
-
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-
-  $connectie = new PDO("mysql:host=$servername; dbname=webapp1", $username, $password);
-
-  // Informatie toevoegen database
-
   $title = $_POST["title"];
   $omschrijving = $_POST["omschrijving"];
   $ingredienten = $_POST["ingredienten"];
   $prijs = $_POST["prijs"];
 
-  $statement = $connectie->prepare("INSERT INTO menu(title, omschrijving, ingredienten, prijs) VALUES(?, ?, ?, ?)");
-  $statement->execute([$title, $omschrijving, $ingredienten, $prijs]);
-
+  $sql = "INSERT INTO menu(title, omschrijving, ingredienten, prijs) VALUES(:title, :omschrijving, :ingredienten, :prijs)";
+  $statement = $conn->prepare($sql);
+  $statement->execute([":title" => $title, ":omschrijving" => $omschrijving, ":ingredienten" => $ingredienten, ":prijs" => $prijs, ]);
+  header("location:menu.php");
 }
 
 include("header.php");
@@ -38,10 +32,10 @@ include("header.php");
   
 <main class="add-main">
   <form method="POST" action="add.php" class="add-form">
-    Titel: <input type="text" name="title">
-    Omschrijving: <input type="text" name="omschrijving">
-    Ingredienten: <input type="text" name="ingredienten">
-    Prijs: <input type="text" name="prijs">
+    Titel: <input type="text" id="title" name="title">
+    Omschrijving: <input type="text" id="omschrijving" name="omschrijving">
+    Ingredienten: <input type="text" id="ingredienten" name="ingredienten">
+    Prijs: <input type="text" id="prijs" name="prijs">
     <button type="submit" name="submit_button">Submit</button>
   </form>
 </main>
