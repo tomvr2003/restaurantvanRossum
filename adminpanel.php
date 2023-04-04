@@ -1,24 +1,13 @@
 <?php session_start(); 
     require_once('connection.php');
-?>
-<?php 
+
     $sql = 'SELECT * FROM menu';
     $statement = $conn->prepare($sql);
     $statement->execute();
     $gerecht = $statement->fetchALL(PDO::FETCH_OBJ);
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<?php 
+    include_once("head.php");
+
     include_once("header.php");
 
     if(isset($_SESSION["username"])) {
@@ -26,6 +15,7 @@
 
 <div class="add-button">
     <a href="./add.php"><button class="index-button" style="color: black;">Voeg gerecht toe</button></a>
+    <a href="./inbox.php"><button class="index-button" style="color: black;">Inbox</button></a>
 </div>
 
 <main class="admin-main">
@@ -47,7 +37,7 @@
         <td><?= $menu->omschrijving; ?></td>
         <td><?= $menu->ingredienten; ?> </td>
         <td><?= $menu->prijs; ?></td>
-        <td style="text-align: center;"><a href="edit.php?id=<?= $menu->id?>"><button>Bewerk</button></a><a href="delete.php?id=<?= $menu->id?>"><button>Verwijder</button></a></td>
+        <td style="text-align: center;"><a href="edit.php?id=<?= $menu->id?>"><button class="index-button admin-button">Bewerk</button></a><a href="delete.php?id=<?= $menu->id?>"><button class="index-button admin-button-red">Verwijder</button></a></td>
     </tr>
     <?php 
         endforeach;

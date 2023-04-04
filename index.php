@@ -1,16 +1,8 @@
 <?php session_start(); 
   require_once('connection.php');
+
+  include("head.php");
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menukaart</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
 <main class="banner">
   <div class="banner-title-con">
@@ -26,6 +18,7 @@
     <?php
     if(!isset($_SESSION["username"])) {
       echo '<a href="./login.php"><button class="index-button">Log in</button></a>';
+      echo '<a href="./contact.php"><button class="index-button">Contact</button></a>';
     } else {
       echo '<a href="./logout.php"><button class="index-button">Log out</button></a>';
       echo '<a href="./adminpanel.php"><button class="index-button">Admin Panel</button></a>';

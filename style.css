@@ -239,6 +239,7 @@ input:focus {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  gap: 30px;
 }
 
 .admin-main {
@@ -259,5 +260,113 @@ tr:nth-child(even) {
 table {
   width: 85%;
   height: 200px;
+}
+
+.admin-button {
+  background-color: rgb(0, 196, 0);
+  border-color: rgb(0, 196, 0);
+  padding: 3px 3px;
+  margin: 0 5px;
+}
+
+.admin-button-red {
+  background-color: #FF9900;
+  border-color: #FF9900;
+  padding: 3px 3px;
+  margin: 0 5px;
+}
+
+.admin-button:hover, .admin-button-red:hover {
+  color: black;
+}
+
+/* Contact */
+
+textarea {
+  width: 100%;
+  height: 50px;
+  color: #000000;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #787878;
+  max-height: 200px;
+  margin: 50px 0;
+  
+}
+
+textarea::-webkit-scrollbar {
+  width: 0px;
+}
+
+textarea::placeholder {
+  color: #000000;
+}
+
+/* Inbox */
+
+.inbox-table {
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
+.inbox-table {
+  width: 25%;
+  height: 80px;
+}
+
+tr {
+  height: 50px;
+}
+
+.inbox-button {
+  background-color: rgb(0, 196, 0);
+  border-color: rgb(0, 196, 0);
+  padding: 3px 10px;
+}
+
+.inbox-button:hover {
+  color: black;
+}
+
+/* PC Version */
+
+@media only screen and (min-width: 1700px) {
+
+  /* Index Pagina */
+
+  .banner-title-con {
+    margin-top: 200px;
+  }
+
+  /* Login pagina */
+
+  .login-container {
+    margin-top: 100px;
+  }
+
+  /* Menu Pagina*/
+
+  main {
+    padding-top: 70px;
+  }
+
+  .boxes-container {
+    height: 35vh;
+  }
+
+  /* Add pagina */
+
+  .add-form {
+    margin-top: 30px;
+  }
+
+  .add2-button {
+    margin-top: 30px;
+  }
 }
 

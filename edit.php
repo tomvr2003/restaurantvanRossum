@@ -1,5 +1,4 @@
-<?php 
-session_start(); 
+<?php session_start(); 
 require("connection.php");
 
 $id = $_GET['id'];
@@ -23,18 +22,13 @@ if(isset($_POST['submit_button'])) {
 }
 
 include("header.php");
+
+include("head.php");
+
+if(isset($_SESSION["username"])) {
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 <main class="add-main">
   <form method="POST" action="" class="add-form">
     <input type="hidden" name="id" value="<?= $gerecht->id ?>">
@@ -45,5 +39,13 @@ include("header.php");
     <button type="submit" name="submit_button">Submit</button>
   </form>
 </main>
+
+<?php 
+  }
+  else {
+    echo "<center><h1 style='margin-top: 50px;'>Je hebt geen permissie om dit gericht te bewerken</h1></center>";
+    echo "<center><a href='./login.php'><button style='margin-top: 30px; color: black;' class='index-button'>Log in</button></a></center>";
+  }
+?>
 </body>
 </html>
