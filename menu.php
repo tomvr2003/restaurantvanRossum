@@ -50,7 +50,7 @@
             <p class="box-left-gerecht"><?php echo $row["ingredienten"]; ?></p>
           </div>
           <div class="box-left-bottom">
-            <h2 class="box-left-prijs">€ <?php echo $row["prijs"]; ?></h2>
+            <h2 style="color: #FF9900;" class="box-left-prijs">€ <?php echo $row["prijs"]; ?></h2>
           </div>
         </div>
       </div>

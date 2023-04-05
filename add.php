@@ -16,8 +16,10 @@
       $statement = $conn->prepare($sql);
       if($statement->execute([":title" => $title, ":omschrijving" => $omschrijving, ":ingredienten" => $ingredienten, ":prijs" => $prijs, ])) {
         echo "<center><h1 style='margin-top: 80px;'>Succesvol verstuurd!</h1></center>";
+        header("Location:adminpanel.php");
       }
-    } else {
+    } 
+    else {
       echo "<center><h1 style='margin-top: 80px;'>Alle velden moeten ingevuld zijn.</h1></center>";
     }
   }
