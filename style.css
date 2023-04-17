@@ -424,8 +424,33 @@ tr {
     margin-top: 30px;
   }
 
-  .add2-button {
+  .add2-button { 
     margin-top: 30px;
   }
 }
 
+/* Mobiele versie */
+
+@media only screen and (max-width: 600px) {
+
+  .banner {
+    background-size: 500%;
+  }
+
+  .banner-title {
+    font-size: 30px;
+  }
+
+  .banner-button-con {
+    gap: 15px;
+  }
+
+  .banner-title-con {
+    margin-top: 250px;
+  }
+
+  .container-bericht {
+    width: 90%;
+  }
+
+}
